@@ -10,7 +10,7 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstati
 
 // 2. TUS credenciales exactas de Firebase
 const firebaseConfig = {
-    apiKey: "AIzaSyDEJP8rURTn0pYWy5iIfM87JmjXdRTZ15g",
+    apiKey: "AIzaSyCSUSnyxUGuqTBUY3JNgiu7ztTY-1VBrY0",
     authDomain: "elzuco-vault-73760.firebaseapp.com",
     databaseURL: "https://elzuco-vault-73760-default-rtdb.firebaseio.com",
     projectId: "elzuco-vault-73760",
