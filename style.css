@@ -1,0 +1,186 @@
+/**
+ * style.css - Taller Central Cloud
+ */
+
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1e40af;
+    --slate-900: #0f172a;
+    --slate-800: #1e293b;
+    --slate-100: #f1f5f9;
+    --red-600: #dc2626;
+    --green-600: #16a34a;
+    --amber-600: #d97706;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--slate-100);
+    scroll-behavior: smooth;
+}
+
+/* --- Gestión de Pestañas (Tabs) --- */
+.tab-content {
+    display: none;
+}
+
+.tab-content.block {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Notificaciones Toast --- */
+.toast {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    font-weight: 800;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(0);
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* --- Modales --- */
+.modal {
+    display: none;
+    background-color: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+}
+
+.modal-content {
+    animation: modalSlide 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalSlide {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* --- Personalización de Tabla --- */
+table th {
+    letter-spacing: 0.1em;
+    border-bottom: 2px solid var(--slate-800);
+}
+
+/* --- Scrollbar Personalizado --- */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--slate-100);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* --- Inputs y Formularios --- */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+input::placeholder {
+    color: #94a3b8;
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+/* --- Mobile Optimizations --- */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    header h1 {
+        font-size: 1.25rem;
+    }
+}
+
+/* --- NUEVA AUTENTICACIÓN FIREBASE (GLASSMORPHISM) --- */
+#auth-container {
+    transition: opacity 0.5s ease;
+}
+
+.backdrop-blur-xl {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+}
+
+#login-form input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+}
+
+#login-form input:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #3b82f6;
+    color: white;
+}
+
+#login-form input {
+    color: white;
+}
