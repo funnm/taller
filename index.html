@@ -2,335 +2,650 @@
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Taller Central - Gestión Cloud</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <title>Elzuco_ing | Engineering Vault Pro</title>
+    <meta name="description"
+        content="Repositorio digital de ingeniería civil. Descarga memorias de cálculo, scripts de automatización en Python, plantillas Excel y ejercicios resueltos de Análisis Estructural, Mecánica de Suelos, Hidráulica y Resistencia de Materiales II.">
+    <meta name="keywords"
+        content="ingeniería civil, resistencia de materiales II, análisis estructural, mecánica de suelos, métodos matriciales, scripts python ingeniería, plantillas excel ingeniería, elzuco_ing">
+    <meta name="author" content="Elzuco_ing">
+    <meta name="robots" content="index, follow">
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <meta property="og:title" content="Engineering Vault Pro | Elzuco_ing">
+    <meta property="og:description"
+        content="Accede a nuestra bóveda técnica: ejercicios resueltos, automatización y normativas para estudiantes y profesionales de la ingeniería.">
+    <meta property="og:image" content="https://elzucofc.lat//img/portada-vault.jpg">
+    <meta property="og:url" content="https://elzucofc.lat/">
+    <meta property="og:type" content="website">
 
-    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5153356459824383"
+        crossorigin="anonymous"></script>
+    <style>
+        /* =======================================================
+           ESTILOS PREMIUM Y RESPONSIVOS (SaaS Dashboard)
+           ======================================================= */
+        :root {
+            --bg-main: #f8fafc;
+            --sidebar-bg: #0f172a;
+            --accent: #0ea5e9;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --border-light: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- Scrollbars Minimalistas --- */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* --- Sidebar & Layout --- */
+        #sidebar {
+            width: 280px;
+            background: var(--sidebar-bg);
+            min-height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            color: #fff;
+            z-index: 1050;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        #content {
+            margin-left: 280px;
+            width: calc(100% - 280px);
+            flex: 1;
+            transition: margin 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .main-container {
+            padding: 40px 50px;
+            min-height: calc(100vh - 200px);
+        }
+
+        /* --- Navegación --- */
+        .nav-link {
+            color: #94a3b8;
+            padding: 12px 25px;
+            font-weight: 500;
+            border-left: 4px solid transparent;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            transition: 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+            border-left-color: var(--accent);
+        }
+
+        /* --- Buscador --- */
+        .search-box input {
+            border-radius: 50px;
+            border: 1px solid var(--border-light);
+            padding: 12px 20px 12px 45px;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+            font-size: 0.95rem;
+            background: #fff;
+            transition: 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15);
+            outline: none;
+        }
+
+        /* --- Tarjetas Profesionales --- */
+        .exercise-card-pro {
+            border-radius: 20px;
+            background: #fff;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .exercise-card-pro:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08);
+            border-color: #bae6fd;
+        }
+
+        .exercise-card-pro p.text-muted {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.6;
+        }
+
+        .badge-archivo {
+            font-weight: 500;
+            padding: 8px 14px;
+            border-radius: 10px;
+            background: #f1f5f9;
+            color: var(--text-dark);
+            border: 1px solid var(--border-light);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: 0.2s;
+            margin: 0 6px 6px 0;
+            font-size: 0.85rem;
+            user-select: none;
+        }
+
+        .badge-archivo:hover {
+            background: #fff;
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- Formularios y Drop Zone --- */
+        .form-control,
+        .form-select {
+            border-radius: 10px;
+            border: 1px solid var(--border-light);
+            padding: 10px 15px;
+            background: #f8fafc;
+            font-size: 0.95rem;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            background: #fff;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15);
+        }
+
+        .drop-zone {
+            border: 2px dashed #cbd5e1;
+            border-radius: 16px;
+            background: #f8fafc;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .drop-zone:hover {
+            border-color: var(--accent);
+            background: #f0f9ff;
+        }
+
+        .file-input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        /* --- Footer Premium --- */
+        footer {
+            background: white;
+            border-top: 1px solid var(--border-light);
+            padding: 60px 0 30px;
+            margin-top: auto;
+        }
+
+        .footer-title {
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: 0.2s;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .footer-link:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: #f1f5f9;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dark);
+            margin-right: 10px;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .social-btn:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .btn-donate {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fde68a;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 12px;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .btn-donate:hover {
+            background: #fde68a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.2);
+        }
+
+        /* --- Mobile / Responsivo --- */
+        .mobile-header {
+            display: none;
+            background: var(--sidebar-bg);
+            color: white;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1040;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.6);
+            z-index: 1045;
+            display: none;
+            backdrop-filter: blur(2px);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        #sidebar-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        @media (max-width: 991.98px) {
+            #sidebar {
+                transform: translateX(-100%);
+            }
+
+            #sidebar.active {
+                transform: translateX(0);
+            }
+
+            .mobile-header {
+                display: flex;
+            }
+
+            #content {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .main-container {
+                padding: 30px 20px;
+            }
+
+            .search-box {
+                width: 100% !important;
+            }
+        }
+    </style>
 </head>
 
-<body class="bg-slate-100 min-h-screen font-sans text-slate-900">
+<body>
 
-    <div id="toast" class="toast"></div>
+    <div class="mobile-header">
+        <h5 class="fw-bold mb-0">ELZUCO<span style="color:var(--accent)">_ING</span></h5>
+        <button class="btn btn-outline-light border-0 px-2 py-1" id="toggle-sidebar"><i
+                class="bi bi-list fs-2"></i></button>
+    </div>
 
-    <div id="auth-container"
-        class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/90 backdrop-blur-md">
-        <div class="bg-white/10 p-8 rounded-3xl border border-white/20 shadow-2xl w-full max-w-md backdrop-blur-xl">
-            <div class="text-center mb-8">
-                <div
-                    class="bg-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/50">
-                    <i class="fas fa-shield-alt text-white text-3xl"></i>
-                </div>
-                <h2 class="text-2xl font-black text-white uppercase tracking-tighter">Panel de Control</h2>
-                <p class="text-blue-400 text-[10px] font-bold uppercase tracking-widest">Taller Central Cloud v2.0</p>
+    <div id="sidebar-overlay"></div>
+
+    <div class="d-flex flex-grow-1">
+        <nav id="sidebar">
+            <div class="sidebar-header text-center">
+                <h4 class="fw-bold mb-1">ELZUCO<span style="color:var(--accent)">_ING</span></h4>
+                <p class="text-muted small fw-bold mb-0" style="letter-spacing: 1px;">VAULT PRO</p>
             </div>
-            <form id="login-form" class="space-y-4">
-                <div class="relative">
-                    <i class="fas fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                    <input type="email" id="login-email" placeholder="CORREO ELECTRÓNICO" required
-                        class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 pl-12 text-white text-sm font-bold focus:ring-2 focus:ring-blue-500 transition-all outline-none">
+            <div class="mt-4 flex-grow-1 overflow-auto">
+                <a class="nav-link active" onclick="filtrar('Todas')"><i class="bi bi-grid-1x2 me-3"></i> Dashboard
+                    General</a>
+                <p class="text-muted small fw-bold px-4 mt-4 mb-2" style="letter-spacing: 1px;">CATEGORÍAS</p>
+                <div id="menu-materias">
                 </div>
-                <div class="relative">
-                    <i class="fas fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                    <input type="password" id="login-pass" placeholder="CONTRASEÑA" required
-                        class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 pl-12 text-white text-sm font-bold focus:ring-2 focus:ring-blue-500 transition-all outline-none">
+            </div>
+            <div class="p-4 border-top border-secondary border-opacity-25 mt-auto">
+                <button class="btn btn-outline-light btn-sm w-100 mb-2 fw-semibold" id="btnAdmin" data-bs-toggle="modal"
+                    data-bs-target="#loginModal">
+                    <i class="bi bi-shield-lock me-2"></i>Acceso Autor
+                </button>
+                <button class="btn btn-danger btn-sm w-100 d-none fw-semibold" id="btnLogout" onclick="logout()">
+                    <i class="bi bi-power me-2"></i>Cerrar Sesión
+                </button>
+            </div>
+        </nav>
+
+        <main id="content">
+            <div class="main-container">
+                <div class="page-header d-flex justify-content-between align-items-center mb-5 flex-wrap gap-3">
+                    <div class="w-100 w-lg-auto mb-3 mb-lg-0">
+                        <h2 class="fw-bold text-dark mb-1" id="pageTitle">Dashboard General</h2>
+                        <p class="text-muted mb-0">Repositorio Multi-Formato de Ingeniería Civil.</p>
+                    </div>
+                    <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-3 w-100 w-lg-auto">
+                        <div class="search-box position-relative w-100">
+                            <i class="bi bi-search position-absolute top-50 translate-middle-y ms-3 text-muted"></i>
+                            <input type="text" id="searchInput" class="form-control" style="width: 320px;"
+                                placeholder="Buscar cálculo o tema...">
+                        </div>
+                        <div class="admin-controls d-none w-100 w-lg-auto">
+                            <button class="btn btn-dark fw-bold px-4 py-2 w-100 rounded-pill shadow-sm"
+                                data-bs-toggle="collapse" data-bs-target="#panelAdmin">
+                                <i class="bi bi-gear-fill me-2"></i>Panel Autor
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <button type="submit"
-                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-4 rounded-2xl shadow-xl transition-all uppercase tracking-widest mt-4">Acceder
-                    al Sistema</button>
-            </form>
+
+                <div class="collapse" id="panelAdmin">
+                    <div class="row g-4 mb-5">
+                        <div class="col-12 col-xl-8">
+                            <div class="card p-4 p-md-5 border-0 shadow-sm rounded-4 h-100">
+                                <h5 class="fw-bold text-dark mb-4"><i
+                                        class="bi bi-cloud-arrow-up text-accent me-2"></i>Nuevo Registro Técnico</h5>
+                                <form id="uploadForm">
+                                    <div class="row g-4">
+                                        <div class="col-12 col-md-7">
+                                            <label class="form-label small fw-bold text-muted">Título del
+                                                Recurso</label>
+                                            <input type="text" id="tit" class="form-control" required>
+                                        </div>
+                                        <div class="col-12 col-md-5">
+                                            <label class="form-label small fw-bold text-muted">Materia /
+                                                Categoría</label>
+                                            <select id="selectMat" class="form-select" required></select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label small fw-bold text-muted">Descripción y
+                                                Detalles</label>
+                                            <textarea id="desc" class="form-control" rows="3" required></textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <div id="drop-zone" class="drop-zone p-5 text-center">
+                                                <i class="bi bi-files display-4 text-muted mb-3 d-block"></i>
+                                                <h6 class="fw-bold text-dark">Arrastra tus archivos aquí</h6>
+                                                <p class="text-muted small mb-0">PDF, Excel, Word, DWG, ZIP, Py,
+                                                    Imágenes...</p>
+                                                <input type="file" id="archivosSubidos" class="file-input" multiple
+                                                    required>
+                                            </div>
+                                            <div id="file-preview-container" class="mt-3"></div>
+                                        </div>
+                                        <div class="col-12 text-end mt-4">
+                                            <button type="submit"
+                                                class="btn btn-dark w-100 w-md-auto px-5 py-2 fw-bold rounded-pill">Subir
+                                                a la Nube</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-xl-4">
+                            <div class="card p-4 p-md-5 border-0 shadow-sm rounded-4 h-100">
+                                <h5 class="fw-bold text-dark mb-4"><i class="bi bi-tags text-accent me-2"></i>Nueva
+                                    Materia</h5>
+                                <form id="formMateria">
+                                    <div class="mb-3">
+                                        <label class="form-label small fw-bold text-muted">Nombre de la Materia</label>
+                                        <input type="text" id="nombreMat" class="form-control" required>
+                                    </div>
+                                    <button type="submit"
+                                        class="btn btn-dark w-100 fw-bold py-2 mb-4 rounded-pill">Agregar al
+                                        Menú</button>
+                                </form>
+                                <h6 class="fw-bold text-muted small mt-2 mb-3">GESTIONAR MATERIAS</h6>
+                                <div id="lista-materias-borrar" class="overflow-auto pe-2" style="max-height: 250px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4" id="grid"></div>
+            </div>
+
+            <footer>
+                <div class="container-fluid px-4 px-md-5">
+                    <div class="row g-5">
+                        <div class="col-12 col-lg-4">
+                            <h5 class="footer-title">ELZUCO<span style="color:var(--accent)">_ING</span></h5>
+                            <p class="text-muted small mb-4">Repositorio educativo enfocado en la digitalización de
+                                memorias de cálculo, scripts de automatización y recursos técnicos para estudiantes y
+                                profesionales de ingeniería civil.</p>
+                            <div class="d-flex">
+                                <a href="https://wa.me/593XXXXXXXXX" target="_blank" class="social-btn"
+                                    title="WhatsApp Contacto"><i class="bi bi-whatsapp"></i></a>
+                                <a href="#" class="social-btn" title="YouTube"><i class="bi bi-youtube"></i></a>
+                                <a href="#" class="social-btn" title="Instagram"><i class="bi bi-instagram"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-lg-2 ms-auto">
+                            <h6 class="footer-title">Categorías</h6>
+                            <a class="footer-link" onclick="filtrar('Análisis Estructural')">Análisis Estructural</a>
+                            <a class="footer-link" onclick="filtrar('Mecánica de Suelos')">Mecánica de Suelos</a>
+                            <a class="footer-link" onclick="filtrar('Hidráulica')">Hidráulica</a>
+                            <a class="footer-link" onclick="filtrar('Resistencia')">Resistencia de Materiales</a>
+                        </div>
+
+                        <div class="col-6 col-lg-2">
+                            <h6 class="footer-title">Ayuda y Legal</h6>
+                            <a href="mailto:elzucoing2002@gmail.com?subject=Soporte%20Vault%20Pro"
+                                class="footer-link">Soporte Técnico</a>
+                            <a href="#" class="footer-link">Contacto Autor</a>
+                            <a class="footer-link" data-bs-toggle="modal" data-bs-target="#privacidadModal">Política de
+                                Privacidad</a>
+                        </div>
+
+                        <div class="col-12 col-lg-3">
+                            <h6 class="footer-title">Apoya el Proyecto</h6>
+                            <p class="text-muted small mb-4">Si este contenido te ha servido, considera realizar una
+                                donación para mantener el servidor y seguir subiendo recursos.</p>
+                            <a href="#" class="btn-donate w-100 justify-content-center">
+                                <i class="bi bi-cup-hot-fill me-2"></i> Apoya al proyecto
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 pt-4 border-top text-center">
+                        <p class="text-muted small mb-0">© 2026 ELZUCO_ING. Desarrollado en Cuenca, Ecuador. Todos los
+                            derechos reservados.</p>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content p-4 text-center border-0 shadow-lg rounded-4">
+                <div class="bg-light rounded-circle d-inline-block p-3 mb-3 mx-auto" style="width: 70px;">
+                    <i class="bi bi-fingerprint text-dark fs-1"></i>
+                </div>
+                <h5 class="fw-bold mb-1">Autorización</h5>
+                <p class="text-muted small mb-4">Acceso exclusivo Elzuco_ing</p>
+                <input type="email" id="email" class="form-control mb-3 text-center" placeholder="Correo electrónico">
+                <input type="password" id="pass" class="form-control mb-4 text-center" placeholder="Contraseña">
+                <button class="btn btn-dark w-100 fw-bold py-2 rounded-pill" id="btnIngresar"
+                    onclick="login()">Ingresar</button>
+            </div>
         </div>
     </div>
 
-    <header class="bg-slate-900 text-white p-6 shadow-2xl border-b-4 border-blue-600 sticky top-0 z-50">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-3">
-                <div class="bg-blue-600 p-2 rounded-xl shadow-lg shadow-blue-500/20">
-                    <i class="fas fa-tools text-2xl"></i>
+    <div class="modal fade" id="editModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 p-2">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="fw-bold text-dark mb-0"><i class="bi bi-pencil-square text-accent me-2"></i>Editar
+                        Registro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <div>
-                    <h1 class="text-xl font-black tracking-tighter uppercase">Taller Central</h1>
-                    <p class="text-[10px] text-blue-400 font-bold tracking-widest uppercase">Gestión de Servicio Técnico
-                    </p>
-                </div>
-            </div>
-
-            <nav class="bg-slate-800 p-1 rounded-2xl border border-slate-700 flex items-center gap-2">
-                <div class="flex gap-1">
-                    <button id="tab-ingreso"
-                        class="px-6 py-2 rounded-xl text-xs font-black uppercase transition-all bg-blue-600">Ingreso</button>
-                    <button id="tab-registro"
-                        class="px-6 py-2 rounded-xl text-xs font-black uppercase transition-all hover:bg-slate-700">Registros</button>
-                </div>
-                <button id="btn-logout" class="ml-2 text-slate-400 hover:text-red-500 px-3 transition-colors"
-                    title="Cerrar Sesión">
-                    <i class="fas fa-power-off text-lg"></i>
-                </button>
-            </nav>
-        </div>
-    </header>
-
-    <main class="container mx-auto p-4 md:p-8">
-        <div id="ingreso-tab" class="tab-content block">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="lg:col-span-1 space-y-6">
-                    <div class="bg-white p-6 rounded-3xl shadow-xl border border-slate-200">
-                        <h2 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">Estado Actual</h2>
-                        <div class="space-y-4">
-                            <div
-                                class="flex items-center justify-between p-4 bg-red-50 rounded-2xl border border-red-100">
-                                <span class="text-xs font-bold text-red-700 uppercase">Pendientes</span>
-                                <span id="stat-pendientes" class="text-2xl font-black text-red-800">0</span>
-                            </div>
-                            <div
-                                class="flex items-center justify-between p-4 bg-amber-50 rounded-2xl border border-amber-100">
-                                <span class="text-xs font-bold text-amber-700 uppercase">Listos Hoy</span>
-                                <span id="stat-reparados" class="text-2xl font-black text-amber-800">0</span>
-                            </div>
-                            <div
-                                class="flex items-center justify-between p-4 bg-green-50 rounded-2xl border border-green-100">
-                                <span class="text-xs font-bold text-green-700 uppercase">Entregas Mes</span>
-                                <span id="stat-entregados" class="text-2xl font-black text-green-800">0</span>
-                            </div>
+                <div class="modal-body">
+                    <form id="editForm">
+                        <input type="hidden" id="editId">
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-muted">Título</label>
+                            <input type="text" id="editTit" class="form-control" required>
                         </div>
-                    </div>
-
-                    <div class="bg-slate-900 p-6 rounded-3xl shadow-xl text-white">
-                        <h3 class="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-4">Configuración
-                        </h3>
-                        <div class="grid grid-cols-2 gap-3">
-                            <button id="btn-editar-tipos"
-                                class="bg-slate-800 hover:bg-blue-600 p-3 rounded-2xl text-[10px] font-bold uppercase transition-all">
-                                <i class="fas fa-laptop mb-2 block text-lg"></i> Tipos
-                            </button>
-                            <button id="btn-editar-marcas"
-                                class="bg-slate-800 hover:bg-blue-600 p-3 rounded-2xl text-[10px] font-bold uppercase transition-all">
-                                <i class="fas fa-tag mb-2 block text-lg"></i> Marcas
-                            </button>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-muted">Materia</label>
+                            <select id="editMat" class="form-select" required></select>
                         </div>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-2">
-                    <form id="form-ingreso"
-                        class="bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden">
-                        <div class="bg-slate-50 p-6 border-b">
-                            <h2 class="text-lg font-black uppercase tracking-tight">Nuevo Ingreso de Equipo</h2>
+                        <div class="mb-4">
+                            <label class="form-label small fw-bold text-muted">Descripción</label>
+                            <textarea id="editDesc" class="form-control" rows="4" required></textarea>
                         </div>
-                        <div class="p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="space-y-4">
-                                <label class="block">
-                                    <span class="text-[10px] font-black uppercase text-slate-500 ml-2">Tipo de
-                                        Aparato</span>
-                                    <select id="tipo-aparato"
-                                        class="w-full mt-1 bg-slate-100 border-none rounded-xl p-3 text-sm font-bold focus:ring-2 focus:ring-blue-500 transition-all uppercase">
-                                        <option value="Laptop">Laptop</option>
-                                        <option value="Celular">Celular</option>
-                                        <option value="Tablet">Tablet</option>
-                                    </select>
-                                </label>
-                                <label class="block">
-                                    <span class="text-[10px] font-black uppercase text-slate-500 ml-2">Marca</span>
-                                    <select id="marca-aparato"
-                                        class="w-full mt-1 bg-slate-100 border-none rounded-xl p-3 text-sm font-bold focus:ring-2 focus:ring-blue-500 transition-all uppercase">
-                                        <option value="HP">HP</option>
-                                        <option value="Samsung">Samsung</option>
-                                        <option value="Apple">Apple</option>
-                                    </select>
-                                </label>
-                                <input type="text" id="serie-equipo" placeholder="NÚMERO DE SERIE / IMEI"
-                                    class="w-full bg-slate-100 border-none rounded-xl p-3 text-sm font-bold placeholder:text-slate-400 uppercase">
-                                <input type="text" id="accesorios-equipo"
-                                    placeholder="ACCESORIOS (Cargador, funda, etc.)"
-                                    class="w-full bg-slate-100 border-none rounded-xl p-3 text-sm font-bold uppercase">
-                            </div>
-
-                            <div class="space-y-4">
-                                <input type="text" id="nombre-cliente" placeholder="NOMBRE DEL CLIENTE" required
-                                    class="w-full bg-slate-100 border-none rounded-xl p-3 text-sm font-bold uppercase">
-                                <input type="tel" id="telefono-cliente" placeholder="TELÉFONO (10 DÍGITOS)" required
-                                    class="w-full bg-slate-100 border-none rounded-xl p-3 text-sm font-bold">
-                                <div class="grid grid-cols-2 gap-3">
-                                    <input type="text" id="ciudad-cliente" placeholder="CIUDAD" required
-                                        class="w-full bg-slate-100 border-none rounded-xl p-3 text-sm font-bold uppercase">
-                                    <input type="text" id="fecha-ingreso"
-                                        class="w-full bg-slate-100 border-none rounded-xl p-3 text-sm font-bold">
-                                </div>
-                                <input type="number" id="precio-real" placeholder="COSTO ESTIMADO ($)" required
-                                    class="w-full bg-blue-50 border-2 border-blue-100 rounded-xl p-3 text-sm font-black text-blue-700">
-                            </div>
-
-                            <div class="md:col-span-2">
-                                <textarea id="descripcion-problema" rows="3"
-                                    placeholder="DESCRIPCIÓN DE LA FALLA O REQUERIMIENTO..." required
-                                    class="w-full bg-slate-100 border-none rounded-2xl p-4 text-sm font-medium uppercase"></textarea>
-                            </div>
-
-                            <div class="md:col-span-2">
-                                <label
-                                    class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-slate-300 rounded-2xl cursor-pointer hover:bg-slate-50 transition-all">
-                                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                        <i class="fas fa-camera text-2xl text-slate-400 mb-2"></i>
-                                        <p class="text-xs text-slate-500 font-bold uppercase">Adjuntar Foto del Equipo
-                                        </p>
-                                    </div>
-                                    <input type="file" id="foto-aparato" accept="image/*" class="hidden">
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="p-8 bg-slate-50 border-t">
-                            <button type="submit"
-                                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-4 rounded-2xl shadow-xl shadow-blue-500/30 transition-all uppercase tracking-widest">
-                                <i class="fas fa-save mr-2"></i> Guardar e Imprimir Ticket
-                            </button>
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-dark fw-bold px-4 rounded-pill">Guardar
+                                Cambios</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div id="registro-tab" class="tab-content hidden">
-            <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden">
-                <div class="p-6 bg-slate-50 border-b flex flex-wrap gap-4 items-center justify-between">
-                    <div class="flex flex-wrap gap-3 flex-1">
-                        <input type="text" id="search-input" placeholder="BUSCAR POR CLIENTE O EQUIPO..."
-                            class="bg-white border rounded-xl px-4 py-2 text-xs font-bold w-full md:w-64 uppercase">
-                        <select id="filtro-estado"
-                            class="bg-white border rounded-xl px-4 py-2 text-xs font-bold uppercase">
-                            <option value="">TODOS LOS ESTADOS</option>
-                            <option value="sin-reparar">PENDIENTES</option>
-                            <option value="reparado">LISTOS</option>
-                            <option value="entregado">ENTREGADOS</option>
-                        </select>
-                        <input type="text" id="filtro-fecha" placeholder="FILTRAR POR FECHA"
-                            class="bg-white border rounded-xl px-4 py-2 text-xs font-bold">
-                    </div>
-                    <div class="text-right">
-                        <p class="text-[10px] font-black text-slate-400 uppercase">Caja Entregados</p>
-                        <p id="total-general" class="text-xl font-black text-blue-600">$0.00</p>
-                    </div>
+    <div class="modal fade" id="visorModal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 p-2">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="fw-bold text-dark mb-0 text-truncate" id="visorTitulo" style="max-width: 90%;"><i
+                            class="bi bi-eye text-accent me-2"></i>Visor de Archivos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-slate-900 text-white text-[10px] uppercase tracking-widest font-black">
-                                <th class="py-4 px-3">Equipo</th>
-                                <th class="py-4 px-3">Cliente</th>
-                                <th class="py-4 px-3">Fechas</th>
-                                <th class="py-4 px-3">Precio</th>
-                                <th class="py-4 px-3">Estado</th>
-                                <th class="py-4 px-3 text-center">Acciones</th>
-                                <th class="py-4 px-3 text-center">Foto</th>
-                            </tr>
-                        </thead>
-                        <tbody id="registros-tabla" class="text-xs font-medium"></tbody>
-                    </table>
+                <div class="modal-body p-0 mt-3" id="visorContenido"
+                    style="height: 75vh; background: #f8fafc; border-radius: 12px; overflow: hidden; position: relative;">
                 </div>
-            </div>
-        </div>
-    </main>
-
-    <div id="modal-estado" class="modal fixed inset-0 bg-slate-900/80 hidden z-50 items-center justify-center p-4">
-        <div class="bg-white rounded-3xl w-full max-w-sm p-6 shadow-2xl">
-            <h3 class="text-xl font-bold mb-4 uppercase text-xs tracking-widest">Actualizar Estado</h3>
-            <input type="hidden" id="registro-id">
-            <select id="select-estado" class="w-full border p-3 rounded-xl mb-4 text-sm font-bold uppercase">
-                <option value="sin-reparar">PENDIENTE</option>
-                <option value="reparado">LISTO / REPARADO</option>
-                <option value="entregado">ENTREGADO AL CLIENTE</option>
-            </select>
-            <div class="flex gap-2">
-                <button id="btn-guardar-estado"
-                    class="flex-1 bg-blue-600 text-white py-2 rounded-xl text-xs font-bold uppercase">Actualizar</button>
-                <button
-                    class="close-modal flex-1 bg-slate-200 py-2 rounded-xl text-xs font-bold uppercase">Cancelar</button>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-light rounded-pill px-4"
+                        data-bs-dismiss="modal">Cerrar</button>
+                    <a id="btnDescargarVisor" href="#" target="_blank" download class="btn btn-dark rounded-pill px-4">
+                        <i class="bi bi-cloud-arrow-down-fill me-2"></i>Descargar Original
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="modal-detalles" class="modal fixed inset-0 bg-slate-900/80 hidden z-50 items-center justify-center p-4">
-        <div class="bg-white rounded-3xl w-full max-w-lg p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-lg font-black uppercase">Ficha Técnica del Equipo</h3>
-                <button class="close-modal text-slate-400 hover:text-red-500"><i
-                        class="fas fa-times text-xl"></i></button>
-            </div>
-            <div class="grid grid-cols-2 gap-6 mb-6">
-                <div>
-                    <p class="text-[10px] font-black text-slate-400 uppercase">Equipo</p>
-                    <p id="detalle-tipo" class="font-bold"></p>
-                    <p id="detalle-marca" class="text-blue-600 font-bold"></p>
+    <div class="modal fade" id="privacidadModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 p-2">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="fw-bold text-dark mb-0"><i class="bi bi-shield-check text-accent me-2"></i>Políticas de
+                        Privacidad</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <div>
-                    <p class="text-[10px] font-black text-slate-400 uppercase">Serie / IMEI</p>
-                    <p id="detalle-serie" class="font-bold"></p>
+                <div class="modal-body text-muted small" style="line-height: 1.6;">
+                    <h6 class="fw-bold text-dark mt-2">1. Información General</h6>
+                    <p>Bienvenido al repositorio técnico de Elzuco_ing. Nos tomamos muy en serio la privacidad de
+                        quienes consultan nuestra plataforma. Esta política describe cómo manejamos la información
+                        cuando visitas nuestro sitio.</p>
+
+                    <h6 class="fw-bold text-dark mt-4">2. Uso de Analíticas</h6>
+                    <p>Nuestra bóveda digital utiliza sistemas de análisis para evaluar el tráfico del sitio web y
+                        mejorar la experiencia de usuario. No recopilamos nombres, correos electrónicos ni datos
+                        personales a menos que los proporciones voluntariamente contactando a soporte.</p>
+
+                    <h6 class="fw-bold text-dark mt-4">3. Descarga de Archivos y Responsabilidad</h6>
+                    <p>Los archivos alojados (PDF, Excel, Python, etc.) son estrictamente material educativo y técnico.
+                        Elzuco_ing no se responsabiliza por el mal uso de los cálculos en proyectos reales sin la
+                        revisión de un ingeniero calculista o profesional certificado. Todos los recursos se descargan y
+                        utilizan bajo la responsabilidad exclusiva del usuario.</p>
+
+                    <p class="mt-4 fst-italic">Última actualización: Abril de 2026</p>
                 </div>
-                <div class="col-span-2">
-                    <p class="text-[10px] font-black text-slate-400 uppercase">Accesorios</p>
-                    <p id="detalle-accesorios" class="font-medium text-slate-600 bg-slate-50 p-2 rounded-lg"></p>
+                <div class="modal-footer border-0 pt-0">
+                    <button type="button" class="btn btn-dark rounded-pill px-4"
+                        data-bs-dismiss="modal">Entendido</button>
                 </div>
-                <div>
-                    <p class="text-[10px] font-black text-slate-400 uppercase">Propietario</p>
-                    <p id="detalle-cliente" class="font-bold"></p>
-                </div>
-            </div>
-            <div class="mb-6">
-                <p class="text-[10px] font-black text-slate-400 uppercase mb-2">Diagnóstico</p>
-                <div id="detalle-descripcion"
-                    class="bg-blue-50 p-4 rounded-2xl text-blue-900 text-xs italic leading-relaxed shadow-inner"></div>
-            </div>
-            <div id="detalle-imagen-container" class="hidden rounded-2xl overflow-hidden border shadow-lg">
-                <img id="detalle-foto" src="" class="w-full h-auto">
             </div>
         </div>
     </div>
 
-    <div id="modal-tipos" class="modal fixed inset-0 bg-slate-900/80 hidden z-50 items-center justify-center p-4">
-        <div class="bg-white rounded-3xl w-full max-w-sm p-6 shadow-2xl">
-            <h3 class="text-xl font-bold mb-4 uppercase text-xs tracking-widest">Gestionar Tipos</h3>
-            <div class="flex mb-4">
-                <input type="text" id="nueva-tipo" class="w-full border p-2 rounded-l-xl text-sm"
-                    placeholder="Ej. Consola">
-                <button id="btn-agregar-tipos" class="bg-green-600 text-white px-4 rounded-r-xl"><i
-                        class="fas fa-plus"></i></button>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1200;">
+        <div id="liveToast" class="toast align-items-center text-white border-0 shadow-lg" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex p-1">
+                <div class="toast-body fw-medium" id="toastMsg"></div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
             </div>
-            <ul id="lista-tipos" class="border rounded-xl max-h-40 overflow-y-auto mb-4 text-xs font-bold uppercase">
-            </ul>
-            <button
-                class="close-modal w-full bg-slate-900 text-white py-2 rounded-xl text-xs font-bold uppercase">Cerrar</button>
         </div>
     </div>
 
-    <div id="modal-marcas" class="modal fixed inset-0 bg-slate-900/80 hidden z-50 items-center justify-center p-4">
-        <div class="bg-white rounded-3xl w-full max-w-sm p-6 shadow-2xl">
-            <h3 class="text-xl font-bold mb-4 uppercase text-xs tracking-widest">Gestionar Marcas</h3>
-            <div class="flex mb-4">
-                <input type="text" id="nueva-marca" class="w-full border p-2 rounded-l-xl text-sm"
-                    placeholder="Nueva marca">
-                <button id="btn-agregar-marcas" class="bg-green-600 text-white px-4 rounded-r-xl"><i
-                        class="fas fa-plus"></i></button>
-            </div>
-            <ul id="lista-marcas" class="border rounded-xl max-h-40 overflow-y-auto mb-4 text-xs font-bold uppercase">
-            </ul>
-            <button
-                class="close-modal w-full bg-slate-900 text-white py-2 rounded-xl text-xs font-bold uppercase">Cerrar</button>
-        </div>
-    </div>
-
-    <footer class="p-8 text-center text-slate-400 text-[10px] font-black uppercase tracking-widest">
-        &copy; <span id="year"></span> Taller Central - Cuenca, Ecuador. Todos los derechos reservados.
-    </footer>
-
-    <script type="module" src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="app.js"></script>
 </body>
 
 </html>
