@@ -129,7 +129,11 @@ function loadRegistros() {
                 <span class="text-[10px] font-black text-blue-600 bg-blue-50 px-1 rounded">${codigoUnico}</span><br>
                 <strong>${reg.tipo}</strong><br><span class="text-[9px] text-slate-400 uppercase">${reg.marca}</span>
             </td>
-            <td class="py-4 px-3">${reg.nombreCliente}<br><span class="text-blue-500 font-bold text-[10px] uppercase">${reg.ciudad || 'Cuenca'}</span></td>
+            <td class="py-4 px-3">
+            ${reg.nombreCliente}<br>
+            <span class="text-blue-500 font-bold text-[10px] uppercase">${reg.ciudad || 'Cuenca'}</span><br>
+            <span class="text-slate-500 font-bold text-[10px]"><i class="fas fa-phone mr-1"></i>${reg.telefonoCliente || 'N/A'}</span>
+            </td>
             <td class="py-4 px-3 text-[10px]">ING: ${reg.fechaIngreso}${reg.fechaEntrega ? `<br><span class="text-green-600 font-bold">ENT: ${reg.fechaEntrega}</span>` : ''}</td>
             <td class="py-4 px-3 font-mono text-blue-600 font-bold">
                 <div onclick="window.editarPrecio('${reg.id}', '${reg.precioReal}')" class="cursor-pointer hover:bg-blue-50 p-1 rounded">
